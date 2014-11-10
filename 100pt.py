@@ -47,8 +47,12 @@ class MyApp:
 		global player
 		global drawpad
                 drawpad.move(player,0,-10)
-    
-         
+        
+        def moveUp(self, event):   
+		global target
+		global drawpad
+                drawpad.move(player,0,-10)
+       
         # Animate function that will bounce target left and right, and trigger the collision detection  
 	def animate(self):
 	    global target
@@ -69,6 +73,11 @@ class MyApp:
                 global target
 		global drawpad
                 global player
+                x1,y1,x2,y2 = drawpad.coords(player)
+                if (x1 >= targetx1 and x2 <= targetx2) and (y1 >= targety1 and y2 <= targety2):
+                    return True
+                else:
+                    return False
                 # Get the co-ordinates of our player AND our target
                 # using x1,y1,x2,y2 = drawpad.coords(object)
 
